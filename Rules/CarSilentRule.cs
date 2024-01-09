@@ -1,4 +1,5 @@
 using NRules.Fluent.Dsl;
+using NRules.RuleModel;
 using Exercises.CarTroubleshooting.Domain;
 
 namespace Exercises.CarTroubleshooting.Rules;
@@ -11,14 +12,16 @@ public class CarSilentOnIgnitionRule : Rule
         
         When()
             .Match(() => car)
-            .Match<Car>(c => c.IsSilentOnIgnition == true);
+            .Match<Car>(c => c.IsSilentOnIgnition == Answer.Yes && 
+                    c.IsBatteryTerminalsCorroded == Answer.Unanswered);
 
         Then()
-            .Do(_ => PromptBatteryQuestion(car));
+            .Do(ctx => PromptBatteryQuestion(ctx, car));
     }
 
-    private static void PromptBatteryQuestion(Car car)
+    private static void PromptBatteryQuestion(IContext ctx, Car car)
     {
         car.IsBatteryTerminalsCorroded = Util.AskQuestion("Are the battery terminals corroded");
+        ctx.Update(car);
     }
 }
