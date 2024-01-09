@@ -2,6 +2,10 @@
 
 A small project demonstrating a use case for the NRules rules engine in C#.
 
+- Demonstrates use of the Fluent DSL for rule definitions
+
+- Forward chaining of rules via the IContext Update() method
+
 ## Dependencies
 
 - DotNet SDK 8.0
