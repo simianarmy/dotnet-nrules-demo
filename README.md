@@ -1,6 +1,6 @@
-# README.md
+# README
 
-A small project demonstrating a use case for the NRules rules engine in C#.
+A small project demonstrating a use case for the [NRules](https://nrules.net) rules engine in C#.
 
 - Demonstrates use of the Fluent DSL for rule definitions
 

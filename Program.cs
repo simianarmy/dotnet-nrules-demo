@@ -42,6 +42,7 @@ public class Program
         var car = new Car();
 
         car.IsSilentOnIgnition = Util.AskQuestion("Is the car silent when you turn the key");
+
         //Insert facts into rules engine's memory
         session.Insert(car);
 
